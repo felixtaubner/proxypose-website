@@ -74,7 +74,7 @@
         </video>
       </div> -->
       <h2 class="subtitle has-text-centered" style="margin-top: 5px;">
-        TL;DR: Our model can track complex 6DoF motion in a video given a single query.
+        TL;DR: Our model can track complex 6DoF motion in a video given a single prompt.
       </h2>
     <!-- <div class="hero-body"> -->
     </div>
@@ -151,17 +151,15 @@
     <div class="container is-max-desktop">
       <!-- Your image here -->
       <!-- <h2 class="title is-3">Method Overview</h2> -->
-      <h2 class="title is-3" style="margin-top: -10px; margin-bottom: 0px;">Overview</h2><br>
+      <h2 class="title is-3" style="margin-top: -10px; margin-bottom: -30px;">Overview</h2><br>
       <div class="container" style="text-align: center;">
-        <video poster="videos/method/method_video_banner.webp" data-src="videos/method/method_video_web.mp4" id="video_overview" autoplay muted playsinline loop style="width: 80%; object-fit: cover;">
+        <video poster="videos/method_video_cropped_poster.webp" data-src="videos/method_video_cropped.mp4" id="video_overview" autoplay muted playsinline loop style="width: 80%; object-fit: cover;">
           <!-- Your video here -->
           <source  type="video/mp4">
         </video>
       </div>
       <h2 class="subtitle is-max-desktop" style="margin-top: 10px;">
-        MVP4D works in two stages: Given a reference image and an input animation, a <b>morphable multi-view video diffusion model (MMVDM)</b> generates a collection of videos from different views. 
-        Then, the generated videos are distilled into a 4D representation, which can be rendered and viewed in real time. 
-      </h2>
+      Given a source video and a single input query pixel, ProxyPose 1) translates the input into a proxy video in which a colored proxy undergoes the same local rigid-body motion, then 2) recovers the proxy’s 6-DoF pose trajectory by Perspective-nnn-Point (PnP).
     </div>
   </div>
 <!-- </div> -->
@@ -176,7 +174,7 @@
       <!-- Paper video. -->
       <h2 class="title is-3">Method</h2>
       <div class="container" style="text-align: left;">
-        <img src="figures/method.webp" alt="method figure" width="100%"/>
+        <img src="figures/method.png" alt="method figure" width="100%"/>
       </div>
     <!-- <div class="content "></div> -->
       <h2 class="subtitle is-max-desktop" style="margin-top: 20px;">
