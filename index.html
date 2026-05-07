@@ -44,7 +44,7 @@
 <section class="hero">
   <div class="hero-body">
     <!-- <div class="container" style="text-align: center;">
-      <img src="static/images/METHOD_ICON" alt="mvp4d logo" width="12%" style="min-width: 100px;"/>
+      <img src="static/images/METHOD_ICON" alt=" logo" width="12%" style="min-width: 100px;"/>
     </div> -->
     <div class="container is-max-desktop">
       <div class="columns is-centered">
@@ -67,14 +67,12 @@
 <section class="hero is-small"></section>
   <div class="hero-body">
     <div class="container is-max-desktop" style="margin-top: -30px;">
-      <!-- <div class="container" style="text-align: center;">
-        <video poster="videos/teaser/teaser_video_poster.webp" data-src="videos/teaser/teaser_video_v2.mp4" id="video_teaser" autoplay muted playsinline loop style="width: 70%; object-fit: cover;">
-          <source 
-          type="video/mp4">
+      <div class="container" style="text-align: center;">
+        <video poster="videos/teaser/teaser_banner.webp" data-src="videos/teaser/teaser_web.mp4" id="video_teaser" autoplay muted playsinline loop style="width: 50%; object-fit: cover;">
         </video>
-      </div> -->
-      <h2 class="subtitle has-text-centered" style="margin-top: 5px;">
-        TL;DR: Our model can track complex 6DoF motion in a video given a single prompt.
+      </div>
+      <h2 class="subtitle has-text-centered" style="margin-top: 10px;">
+        TL;DR: Our model can track complex 6DoF motion in a video given a single query pixel.
       </h2>
     <!-- <div class="hero-body"> -->
     </div>
@@ -91,41 +89,60 @@
         Gallery
       </h2>
 
+      <h2 class="subtitle has-text-centered is-6" style="margin-top: 10px; width: 60%; margin-left: auto; margin-right: auto;">
+        Click to switch between 3D tracking visualizations and the generated proxy videos. Select sequences using the thumbnails below.
+      </h2>
+
+      <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 14px;">
+        <button id="gallery-tab-tracking" onclick="switchGalleryTab('tracking')"
+          style="padding: 8px 20px; border-radius: 20px; border: 2px solid #363636; background: #363636; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.15s, color 0.15s;">
+          Tracking Visualization
+        </button>
+        <button id="gallery-tab-proxy" onclick="switchGalleryTab('proxy')"
+          style="padding: 8px 20px; border-radius: 20px; border: 2px solid #363636; background: transparent; color: #363636; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.15s, color 0.15s;">
+          Generated Proxy Videos
+        </button>
+      </div>
+
       <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
         <div style="flex: 1 1 420px; max-width: 800px; text-align: center;">
-          <video poster="videos/showcase/balloons_banner.webp" id="video_animation" autoplay muted playsinline loop controls style="width: 100%; border-radius: 8px;">
+          <video poster="videos/showcase/balloons_banner.webp" id="video_animation" autoplay muted playsinline loop style="width: 100%; border-radius: 8px;">
             <source src="videos/showcase/balloons.mp4" type="video/mp4">
           </video>
-          <div style="display: flex; gap: 10px; margin-top: 8px; font-size: 18px;">
+          <video id="video_proxy" autoplay muted playsinline loop style="width: 100%; border-radius: 8px; display: none;"></video>
+          <div id="gallery-captions-tracking" style="display: flex; gap: 10px; margin-top: 8px; font-size: 18px;">
             <span style="flex: 9; text-align: center;">prompts</span>
             <span style="flex: 9; text-align: center;">tracking</span>
             <span style="flex: 16; text-align: center;">3D visualization</span>
+          </div>
+          <div id="gallery-captions-proxy" style="display: none; gap: 10px; margin-top: 8px; font-size: 18px;">
+            <span style="flex: 1; text-align: center;">prompt</span>
+            <span style="flex: 1; text-align: center;">proxy video</span>
+            <span style="flex: 1; text-align: center;">tracked proxy</span>
+            <span style="flex: 1; text-align: center;">6DoF pose</span>
           </div>
         </div>
       </div>
 
       <div class="previews" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px;">
         <a onclick="loadContent('vase_breaking')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/vase_breaking_icon.webp" alt="vase breaking" style="cursor: pointer; border-radius: 6px;"></a>
+        <a onclick="loadContent('skateboard')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/skateboard_icon.webp" alt="skateboard" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('balloons')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/balloons_icon.webp" alt="balloons" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('bane_airplane_destruction')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/bane_airplane_destruction_icon.webp" alt="bane airplane destruction" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('baseball_swing_3')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/baseball_swing_3_icon.webp" alt="baseball swing" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('beauty_and_best')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/beauty_and_best_icon.webp" alt="beauty and best" style="cursor: pointer; border-radius: 6px;"></a>
-        <a onclick="loadContent('big_wave')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/big_wave_icon.webp" alt="big wave" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('chicken_gimbal')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/chicken_gimbal_icon.webp" alt="chicken gimbal" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('disco_ball')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/disco_ball_icon.webp" alt="disco ball" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('dude_perfect_airplane')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/dude_perfect_airplane_icon.webp" alt="dude perfect airplane" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('dune_ornithopter')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/dune_ornithopter_icon.webp" alt="dune ornithopter" style="cursor: pointer; border-radius: 6px;"></a>
-        <a onclick="loadContent('events_spinner')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/events_spinner_icon.webp" alt="events spinner" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('f1_crash_trimmed')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/f1_crash_trimmed_icon.webp" alt="f1 crash" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('face_shout_and_laugh')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/face_shout_and_laugh_icon.webp" alt="face shout and laugh" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('gravity_destruction')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/gravity_destruction_icon.webp" alt="gravity destruction" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('ikea_glass')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/ikea_glass_icon.webp" alt="ikea glass" style="cursor: pointer; border-radius: 6px;"></a>
-        <a onclick="loadContent('ikea_glass_bg_2')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/ikea_glass_bg_2_icon.webp" alt="ikea glass bg" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('illusion')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/illusion_icon.webp" alt="illusion" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('illusion_cam')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/illusion_cam_icon.webp" alt="illusion cam" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('interstellar_sync')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/interstellar_sync_icon.webp" alt="interstellar sync" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('lumiere_ciotat_out')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/lumiere_ciotat_out_icon.webp" alt="lumiere ciotat" style="cursor: pointer; border-radius: 6px;"></a>
-        <a onclick="loadContent('marble_race_fail')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/marble_race_fail_icon.webp" alt="marble race" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('mickey_dog_show_out')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/mickey_dog_show_out_icon.webp" alt="mickey dog show" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('mickey_steamboat_out')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/mickey_steamboat_out_icon.webp" alt="mickey steamboat" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('mission_impossible_planes_2')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/mission_impossible_planes_2_icon.webp" alt="mission impossible" style="cursor: pointer; border-radius: 6px;"></a>
@@ -133,8 +150,6 @@
         <a onclick="loadContent('pingpong_swing')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/pingpong_swing_icon.webp" alt="pingpong swing" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('roller_coaster_1')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/roller_coaster_1_icon.webp" alt="roller coaster" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('seals_trimmed')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/seals_trimmed_icon.webp" alt="seals trimmed" style="cursor: pointer; border-radius: 6px;"></a>
-        <a onclick="loadContent('single_photon')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/single_photon_icon.webp" alt="single photon" style="cursor: pointer; border-radius: 6px;"></a>
-        <a onclick="loadContent('skateboard')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/skateboard_icon.webp" alt="skateboard" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('space_oddyssey_bones')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/space_oddyssey_bones_icon.webp" alt="space oddyssey" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('starship_catch')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/starship_catch_icon.webp" alt="starship catch" style="cursor: pointer; border-radius: 6px;"></a>
         <a onclick="loadContent('starwars_destruction')" style="display: inline-flex; flex: 0 0 70px;"><img class="card-img" src="videos/showcase/starwars_destruction_icon.webp" alt="starwars destruction" style="cursor: pointer; border-radius: 6px;"></a>
@@ -159,7 +174,7 @@
         </video>
       </div>
       <h2 class="subtitle is-max-desktop" style="margin-top: 10px;">
-      Given a source video and a single input query pixel, ProxyPose (1) translates the input into a proxy video in which a colored proxy undergoes the same local rigid-body motion, then (2) recovers the proxy’s 6-DoF pose trajectory by Perspective-n-Point (PnP).
+      Given a source video and a single query pixel, ProxyPose (1) translates the input into a "proxy video" in which a colored cube undergoes the same local rigid-body motion as the queried point, then (2) recovers the 6-DoF pose trajectory via Perspective-n-Point (PnP).
     </div>
   </div>
 <!-- </div> -->
@@ -178,13 +193,14 @@
       </div>
     <!-- <div class="content "></div> -->
       <h2 class="subtitle is-max-desktop" style="margin-top: 20px;">
-        <b>Overview of MVP4D.</b> (a) The method takes as input a single reference image that is encoded into the latent
-        space of a variational autoencoder. An off-the-shelf face tracker (<a href="https://felixtaubner.github.io/flowface/" target="_blank">FlowFace</a>) estimates 
-        a 3DMM (<a href="https://flame.is.tue.mpg.de/" target="_blank">FLAME</a>) for the reference image, from which
-        we derive conditioning signals that describe camera pose, head pose, and expression. We associate additional
-        conditioning signals with each input noisy latent image based on the desired generated viewpoints, poses, and expressions. 
-        A multi-view video diffusion transformer denoises the latent multi-view video. We then use the variational autoencoder to decode the latent video frames to a series of multi-view image frames (the resulting multi-view video), which is distilled into a 4D representation for real-time visualization.
-      <!-- </div> -->
+        <b>Overview of ProxyPose. </b> (a) The method takes as input a monocular RGB video and a
+        user-selected query point, both encoded into the latent space of a variational autoencoder.
+        During training, first-frame proxy tokens receive reduced noise for conditioning,
+        subsequent proxy tokens are corrupted with full Gaussian noise, and source video tokens remain
+        noise-free. The source and proxy token streams are concatenated along the token dimension and processed by
+        a LoRA-finetuned video generative model to synthesize a temporally consistent proxy video. (b) The generated
+        proxy video is tracked using learning-free geometric methods&mdash;contour fitting and
+        Perspective-n-Point (PnP) optimization&mdash;to recover the 6-DoF pose of the queried object.
       </h2>
       <!-- <h2 class="title is-4">3D Model Fitting</h2>
       <div class="container" style="text-align: center;">
@@ -235,7 +251,7 @@
       </h2>
 
       <h2 class="subtitle is-max-desktop" style="margin-top: 20px;">
-        Our method can be extended to camera pose tracking by tracking a static point in the world. This enables robust tracking even when COLMAP fails, for example due to lack of texture
+        Our method can be extended to camera pose tracking by tracking a static point in the world. This enables robust tracking even when COLMAP fails, for example, due to lack of texture.
       </h2>
 
       <div id="results-carousel" class="carousel results-carousel" >
@@ -258,7 +274,7 @@
         Face tracking
       </h2>
       <h2 class="subtitle is-max-desktop" style="margin-top: 20px;">
-        Despite being trained only on rigid objects, our method can also track non-rigid objects such as human faces.
+        Despite being trained only on rigid objects, ProxyPose can also track non-rigid surfaces such as human faces.
       </h2>
       <div class="item" style="text-align: center;">
       <div style="display: inline-block; max-width: 100%;">
@@ -275,11 +291,11 @@
       </h2>
 
       <h2 class="subtitle is-max-desktop" style="margin-top: 20px;">
-        With no additional training, ProxyPose can be applied to other sensing modalities such as event-based video and single-photon imaging.
+        With no additional training, ProxyPose can be applied to other sensing modalities such as event-based video and single-photon imaging. Here we track a hand spinner captured with an event camera and a Nerf gun captured with a single-photon avalanche diode (SPAD) array.
       </h2>
       <div class="item" style="text-align: center;">
       <div style="display: inline-block; max-width: 100%;">
-        <video poster="videos/applications/events_and_photon.webp" data-src="videos/applications/events_and_photon.mp4" autoplay muted playsinline loop style="height: 250px; width: auto; display: block;"><source type="video/mp4"></video>
+        <video poster="videos/applications/events_and_photon.webp" data-src="videos/applications/events_and_photon.mp4" autoplay muted playsinline loop style="height: 200px; width: auto; display: block;"><source type="video/mp4"></video>
         <div style="display: flex; justify-content: space-evenly; text-align: center; margin-top: 6px;">
           <span class="subtitle is-6" style="flex: 2; margin-bottom: 0;">Event-based video</span>
           <span class="subtitle is-6" style="flex: 3; margin-bottom: 0;">Single-photon imaging</span>
@@ -297,15 +313,15 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3">Baseline Comparisons</h2>
       <h2 class="subtitle is-max-desktop" style="margin-top: 20px;">
-        We conduct experiments on 6-DoF pose tracking on various datasets. 
-        For quantitative results, we refer to our paper.
+        We conduct experiments on 6-DoF pose tracking across various datasets.
+        For quantitative results, we refer the reader to our paper.
       </h2>
 
       <h2 class="title is-4" style="margin-top: 20px;">In-the-wild</h2>
 
       <h2 class="subtitle is-max-desktop" style="margin-top: 20px;">
         Previous methods struggle to track objects with challenging materials (e.g., transparent, reflective) and under extreme occlusions.
-        ProxyPose can track objects in these challenging scenarios, as shown in the videos below.
+        ProxyPose handles these challenging scenarios robustly.
       </h2>
 
       <div id="benchmark-carousel-ho3d" class="carousel results-carousel">
@@ -364,8 +380,14 @@
 
       </div>
 
-      <h2 class="title is-4" style="margin-top: 20px;margin-bottom: -5px">HO3D</h2>
-      
+      <h2 class="title is-4" style="margin-top: 30px;">Rigid Pose Tracking Datasets</h2>
+
+      <h2 class="subtitle is-max-desktop" style="margin-top: 20px;">
+        We evaluate on rigid pose estimation datasets HO3D, YCBInEOAT, and a set of sequences from the ProxyPose Synthetic Benchmark. Since the objects in these datasets are rigid, multi-query bundle adjustment can be applied, which improves performance in most cases. However, even without incorporating rigidity constraints or bundle adjustment, ProxyPose (one query) achieves state-of-the-art performance.
+      </h2>
+
+      <h2 class="title is-5" style="margin-top: 20px;margin-bottom: -5px">HO3D</h2>
+
       <div id="benchmark-carousel-ho3d" class="carousel results-carousel">
         <div class="item"><video poster="videos/benchmark_videos/ho3d_00000.webp" data-src="videos/benchmark_videos/ho3d_00000.mp4" autoplay muted playsinline loop width="100%"><source type="video/mp4"></video></div>
         <div class="item"><video poster="videos/benchmark_videos/ho3d_00001.webp" data-src="videos/benchmark_videos/ho3d_00001.mp4" autoplay muted playsinline loop width="100%"><source type="video/mp4"></video></div>
@@ -382,7 +404,7 @@
         <div class="item"><video poster="videos/benchmark_videos/ho3d_00012.webp" data-src="videos/benchmark_videos/ho3d_00012.mp4" autoplay muted playsinline loop width="100%"><source type="video/mp4"></video></div>
       </div>
 
-      <h2 class="title is-4" style="margin-top: 40px;margin-bottom: -5px">YCBInEOAT</h2>
+      <h2 class="title is-5" style="margin-top: 40px;margin-bottom: -5px">YCBInEOAT</h2>
 
       <div id="benchmark-carousel-ycbineoat" class="carousel results-carousel">
         <div class="item"><video poster="videos/benchmark_videos/ycbineoat_00000.webp" data-src="videos/benchmark_videos/ycbineoat_00000.mp4" autoplay muted playsinline loop width="100%"><source type="video/mp4"></video></div>
@@ -396,7 +418,7 @@
         <div class="item"><video poster="videos/benchmark_videos/ycbineoat_00008.webp" data-src="videos/benchmark_videos/ycbineoat_00008.mp4" autoplay muted playsinline loop width="100%"><source type="video/mp4"></video></div>
       </div>
 
-      <h2 class="title is-4" style="margin-top: 40px; margin-bottom: -5px">ProxyPose Synthetic Benchmark</h2>
+      <h2 class="title is-5" style="margin-top: 40px; margin-bottom: -5px">ProxyPose Synthetic Benchmark</h2>
 
       <div id="benchmark-carousel-proxy" class="carousel results-carousel">
         <div class="item"><video poster="videos/benchmark_videos/proxy_00000.webp" data-src="videos/benchmark_videos/proxy_00000.mp4" autoplay muted playsinline loop width="100%"><source type="video/mp4"></video></div>
@@ -424,21 +446,25 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3">Limitations</h2>
 
+      <h2 class="subtitle is-max-desktop" style="margin-top: 20px;">
+        Despite its generality, ProxyPose inherits limitations from the underlying video model and proxy-based formulation. We sometimes observe pose drift for reflective or textureless surfaces under complex motion (balloons). Additionally, the approximate local rigidity implied by the proxy can be inconsistent with scenes where tracking is ill-defined (e.g., surface regions on a fluid). Fast motion can exceed the capabilities of the video model's variational autoencoder, producing blurred proxy frames that degrade contour detection and tracking (see the marble racing scene).
+      </h2>
+
       <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 20px; width: 80%; margin-left: auto; margin-right: auto;">
 
         <div style="text-align: center;">
           <video poster="videos/limitations/failure_balloon.webp" data-src="videos/limitations/failure_balloon.mp4" autoplay muted playsinline loop width="100%"><source type="video/mp4"></video>
-          <p class="subtitle is-6" style="margin-top: 6px; margin-bottom: 0;">Highly reflective surfaces</p>
+          <p class="subtitle is-6" style="margin-top: 6px; margin-bottom: 0;">Reflective/textureless surfaces</p>
         </div>
 
         <div style="text-align: center;">
           <video poster="videos/limitations/failure_big_wave.webp" data-src="videos/limitations/failure_big_wave.mp4" autoplay muted playsinline loop width="100%"><source type="video/mp4"></video>
-          <p class="subtitle is-6" style="margin-top: 6px; margin-bottom: 0;">Ill-defined motion, e.g. fluids.</p>
+          <p class="subtitle is-6" style="margin-top: 6px; margin-bottom: 0;">Ill-defined motion (fluid)</p>
         </div>
 
         <div style="text-align: center;">
           <video poster="videos/limitations/failure_marbles.webp" data-src="videos/limitations/failure_marbles.mp4" autoplay muted playsinline loop width="100%"><source type="video/mp4"></video>
-          <p class="subtitle is-6" style="margin-top: 6px; margin-bottom: 0;">Small, fast-moving objects.</p>
+          <p class="subtitle is-6" style="margin-top: 6px; margin-bottom: 0;">Fast motion (marble racing)</p>
         </div>
 
       </div>
@@ -658,25 +684,52 @@
     }
   }
 
+  let galleryActiveTab = 'tracking';
+
+  function switchGalleryTab(tab) {
+    galleryActiveTab = tab;
+    const trackingVid = document.getElementById('video_animation');
+    const proxyVid = document.getElementById('video_proxy');
+    const trackingCaptions = document.getElementById('gallery-captions-tracking');
+    const proxyCaptions = document.getElementById('gallery-captions-proxy');
+    const btTracking = document.getElementById('gallery-tab-tracking');
+    const btProxy = document.getElementById('gallery-tab-proxy');
+    btTracking.style.background = tab === 'tracking' ? '#363636' : 'transparent';
+    btTracking.style.color    = tab === 'tracking' ? '#fff' : '#363636';
+    btProxy.style.background  = tab === 'proxy'    ? '#363636' : 'transparent';
+    btProxy.style.color       = tab === 'proxy'    ? '#fff' : '#363636';
+    trackingVid.style.display = tab === 'tracking' ? '' : 'none';
+    proxyVid.style.display = tab === 'proxy' ? '' : 'none';
+    trackingCaptions.style.display = tab === 'tracking' ? 'flex' : 'none';
+    proxyCaptions.style.display = tab === 'proxy' ? 'flex' : 'none';
+    if (tab === 'tracking') { trackingVid.play().catch(() => {}); proxyVid.pause(); }
+    else { proxyVid.play().catch(() => {}); trackingVid.pause(); }
+  }
+
   function loadContent(subject_id) {
     const item = liveItems[subject_id];
-    if (!item) {
-      return;
+    if (!item) return;
+
+    const trackingVid = document.getElementById('video_animation');
+    if (trackingVid) {
+      trackingVid.pause();
+      trackingVid.src = item.vid;
+      trackingVid.poster = item.poster;
+      trackingVid.load();
+      if (galleryActiveTab === 'tracking') trackingVid.play().catch(() => {});
     }
 
-    const videoElement = document.querySelector('#video_animation');
-    if (videoElement) {
-      videoElement.pause();
-      videoElement.src = item["vid"];
-      videoElement.poster = item["poster"];
-      videoElement.load();
-      videoElement.play().catch(() => {});
+    const proxyVid = document.getElementById('video_proxy');
+    if (proxyVid) {
+      proxyVid.pause();
+      proxyVid.src = item.proxy_vid || ('videos/proxy_gen/' + item.vid.split('/').pop());
+      proxyVid.poster = item.proxy_poster || '';
+      proxyVid.load();
+      if (galleryActiveTab === 'proxy') proxyVid.play().catch(() => {});
     }
 
     const imageElement = document.querySelector('#reference_image');
-    if (imageElement) {
-      imageElement.src = item["ref"];
-    }
+    if (imageElement) imageElement.src = item.ref;
   }
 
   document.addEventListener('DOMContentLoaded', () => {
