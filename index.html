@@ -239,172 +239,55 @@
       <h2 class="title is-4" style="margin-top: 30px;">
         Camera tracking
       </h2>
+
+      <h2 class="subtitle is-max-desktop" style="margin-top: 20px;">
+        Our method can be extended to camera pose tracking by tracking a static point in the world. This enables robust tracking even when COLMAP fails, for example due to lack of texture
+      </h2>
+
       <div id="results-carousel" class="carousel results-carousel" >
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-          <!-- Column 1 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <img src="videos/showcase/ref/morgan.webp_512x512.webp" alt="Reference" width="90%" />
-            <img src="videos/showcase/ref/robert_downey_jr.webp_512x512.webp" alt="Reference" width="90%" />
-            <h2 class="subtitle" style="margin-top: 5px;">reference image</h2>
-          </div>
-        
-          <!-- Repeat column 2 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <video poster="videos/showcase/360/morgan_videos_poster.webp" data-src="videos/showcase/360/morgan_videos.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-            <video poster="videos/showcase/360/robert_gen_poster.webp" data-src="videos/showcase/360/robert_gen.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-            <h2 class="subtitle" style="margin-top: 5px; margin-bottom: 30px">videos generated with MMVDM</h2>
-          </div>
-        
-          <!-- Repeat column 3 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <video poster="videos/showcase/360/morgan_poster.webp" data-src="videos/showcase/360/morgan.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-        
-            <video poster="videos/showcase/360/robert_poster.webp" data-src="videos/showcase/360/robert.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-            <h2 class="subtitle" style="margin-top: 5px;">MVP4D avatar</h2>
+        <div class="item" style="text-align: center;">
+          <div style="display: inline-block; max-width: 100%;">
+            <video poster="videos/applications/camera0.webp" data-src="videos/applications/camera0.mp4" autoplay muted playsinline loop style="height: 250px; width: auto; display: block;"><source type="video/mp4"></video>
           </div>
         </div>
 
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-          <!-- Column 1 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <img src="videos/showcase/ref/mat_damon_512x512.webp" alt="Reference" width="90%" />
-            <img src="videos/showcase/ref/sandra_bullock_512x512.webp" alt="Reference" width="90%" />
-            <h2 class="subtitle" style="margin-top: 5px;">reference image</h2>
-          </div>
-        
-          <!-- Repeat column 2 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <video poster="videos/showcase/360/mat_damon_gen_poster.webp" data-src="videos/showcase/360/mat_damon_gen.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-            <video poster="videos/showcase/360/sandra_gen_poster.webp" data-src="videos/showcase/360/sandra_gen.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-            <h2 class="subtitle" style="margin-top: 5px; margin-bottom: 30px">videos generated with MMVDM</h2>
-          </div>
-        
-          <!-- Repeat column 3 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <video poster="videos/showcase/360/mat_damon_poster.webp" data-src="videos/showcase/360/mat_damon.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-        
-            <video poster="videos/showcase/360/sandra_poster.webp" data-src="videos/showcase/360/sandra.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-            <h2 class="subtitle" style="margin-top: 5px;">MVP4D avatar</h2>
+        <div class="item" style="text-align: center;">
+          <div style="display: inline-block; max-width: 100%;">
+            <video poster="videos/applications/camera1.webp" data-src="videos/applications/camera1.mp4" autoplay muted playsinline loop style="height: 250px; width: auto; display: block;"><source type="video/mp4"></video>
           </div>
         </div>
 
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-          <!-- Column 1 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <img src="videos/showcase/ref/tom_cruise_2_512x512.webp" alt="Reference" width="90%" />
-            <img src="videos/showcase/ref/michelle_2_512x512.webp" alt="Reference" width="90%" />
-            <h2 class="subtitle" style="margin-top: 5px;">reference image</h2>
-          </div>
-        
-          <!-- Repeat column 2 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <video poster="videos/showcase/360/cruise_gen_poster.webp" data-src="videos/showcase/360/cruise_gen.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-            <video poster="videos/showcase/360/michelle_gen_poster.webp" data-src="videos/showcase/360/michelle_gen.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-            <h2 class="subtitle" style="margin-top: 5px; margin-bottom: 30px">videos generated with MMVDM</h2>
-          </div>
-        
-          <!-- Repeat column 3 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <video poster="videos/showcase/360/cruise_poster.webp" data-src="videos/showcase/360/cruise.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-        
-            <video poster="videos/showcase/360/michelle_2_poster.webp" data-src="videos/showcase/360/michelle_2.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-            <h2 class="subtitle" style="margin-top: 5px;">MVP4D avatar</h2>
-          </div>
-        </div>
       </div>
 
 
       <h2 class="title is-4" style="margin-top: 30px;">
-        120-degree avatars
+        Face tracking
       </h2>
-      <div id="results-carousel" class="carousel results-carousel" >
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-          <!-- Column 1 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <img src="videos/showcase/ref/michelle.webp_512x512.webp" alt="Reference" width="90%" />
-            <img src="videos/showcase/ref/keanu_reeves_512x512.webp" alt="Reference" width="90%" />
-            <h2 class="subtitle" style="margin-top: 5px;">reference image</h2>
-          </div>
-        
-          <!-- Repeat column 2 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <video poster="videos/showcase/front/michelle_gen_poster.webp" data-src="videos/showcase/front/michelle_gen.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-            <video poster="videos/showcase/front/keanu_gen_poster.webp" data-src="videos/showcase/front/keanu_gen.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-            <h2 class="subtitle" style="margin-top: 5px; margin-bottom: 30px">videos generated with MMVDM</h2>
-          </div>
-        
-          <!-- Repeat column 3 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <video poster="videos/showcase/front/michelle_poster.webp" data-src="videos/showcase/front/michelle.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-        
-            <video poster="videos/showcase/front/keanu_poster.webp" data-src="videos/showcase/front/keanu.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-            <h2 class="subtitle" style="margin-top: 5px;">MVP4D avatar</h2>
-          </div>
-        </div>
+      <h2 class="subtitle is-max-desktop" style="margin-top: 20px;">
+        Despite being trained only on rigid objects, our method can also track non-rigid objects such as human faces.
+      </h2>
+      <div class="item" style="text-align: center;">
+      <div style="display: inline-block; max-width: 100%;">
+      <video poster="videos/applications/face_tracking.webp" data-src="videos/applications/face_tracking.mp4" autoplay muted playsinline loop style="height: 250px; width: auto; display: block;"><source type="video/mp4"></video>
+            
+      </div>
+      </div>
 
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-          <!-- Column 1 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <img src="videos/showcase/ref/johnny_depp_512x512.webp" alt="Reference" width="90%" />
-            <img src="videos/showcase/ref/rihanna_hair.png_512x512.webp" alt="Reference" width="90%" />
-            <h2 class="subtitle" style="margin-top: 5px;">reference image</h2>
-          </div>
-        
-          <!-- Repeat column 2 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <video poster="videos/showcase/front/depp_gen_poster.webp" data-src="videos/showcase/front/depp_gen.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-            <video poster="videos/showcase/front/rihanna_gen_poster.webp" data-src="videos/showcase/front/rihanna_gen.mp4"  autoplay muted playsinline loop width="90%">
-              <source type="video/mp4">
-            </video>
-            <h2 class="subtitle" style="margin-top: 5px; margin-bottom: 30px">videos generated with MMVDM</h2>
-          </div>
-        
-          <!-- Repeat column 3 -->
-          <div style="flex: 1 1 30%; max-width: 30%; text-align: center;">
-            <video poster="videos/showcase/front/depp_poster.webp" data-src="videos/showcase/front/depp.mp4" autoplay muted playsinline loop width="90%">
-              <source  type="video/mp4">
-            </video>
-        
-            <video poster="videos/showcase/front/rihanna_poster.webp" data-src="videos/showcase/front/rihanna.mp4" autoplay muted playsinline loop width="90%">
-              <source type="video/mp4">
-            </video>
-            <h2 class="subtitle" style="margin-top: 5px;">MVP4D avatar</h2>
-          </div>
+      <h2 class="title is-4" style="margin-top: 30px;">
+        Extension to other sensing modalities
+      </h2>
+
+      <h2 class="subtitle is-max-desktop" style="margin-top: 20px;">
+        With no additional training, ProxyPose can be applied to other sensing modalities such as event-based video and single-photon imaging.
+      </h2>
+      <div class="item" style="text-align: center;">
+      <div style="display: inline-block; max-width: 100%;">
+        <video poster="videos/applications/events_and_photon.webp" data-src="videos/applications/events_and_photon.mp4" autoplay muted playsinline loop style="height: 250px; width: auto; display: block;"><source type="video/mp4"></video>
+        <div style="display: flex; justify-content: space-evenly; text-align: center; margin-top: 6px;">
+          <span class="subtitle is-6" style="flex: 1; margin-bottom: 0;">Event-based video</span>
+          <span class="subtitle is-6" style="flex: 1; margin-bottom: 0;">Single-photon imaging</span>
         </div>
+      </div>
       </div>
     </div>
   </div>
